@@ -1,0 +1,144 @@
+/*
+Theme Name: TrapDanmark
+Theme URI: http://underscores.me/
+Author: Kristoffer Tonning
+Author URI: http://pandalistic.com
+Description: TrapDanmark.dk
+Version: 1.0-wpcom
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: trapdanmark
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+ TrapDanmark is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 - Reset
+2.0 - Typography
+3.0 - Elements
+4.0 - Forms
+5.0 - Navigation
+	5.1 - Links
+	5.2 - Menus
+6.0 - Accessibility
+7.0 - Alignments
+8.0 - Clearings
+9.0 - Widgets
+10.0 - Content
+	10.1 - Posts and pages
+	10.2 - Asides
+	10.3 - Comments
+11.0 - Infinite scroll
+12.0 - Media
+	12.1 - Captions
+	12.2 - Galleries
+--------------------------------------------------------------*/
+
+$screen-xs: 767px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+/*--------------------------------------------------------------
+3.0 - Elements
+--------------------------------------------------------------*/
+.intro {
+	background-image: url('../img/background.jpg');
+	background-attachment: scroll;
+	background-size: cover;
+	background-position: center center;
+}
+
+@media screen and (max-width:$screen-xs){
+	.circle-text {
+		width:100%;
+		margin: auto;
+	}
+}
+
+
+@media screen and (min-width:$screen-sm){
+	.circle-text {
+		width:50%;
+		max-width: 500px;
+		margin: auto;
+	}
+	.circle-text:after {
+		content: "";
+		display: block;
+		width: 100%;
+		height:0;
+		padding-bottom: 100%;
+		background: rgba(0,0,0,0.5);
+		-moz-border-radius: 50%; 
+		-webkit-border-radius: 50%; 
+		border-radius: 50%;
+	}
+	.circle-text .circle-text-inner {
+		padding-top:50%;
+	}
+}
+
+.circle-text .circle-text-inner {
+	float:left;
+	width:100%;
+	margin-top:-8.5em;
+	text-align:center;
+	color:white;
+}
+
+.circle-text-outer {
+	padding: 200px 0;
+}
+
+.circle-text-inner div {
+	display: block;
+	width: 75%;
+	margin: auto;
+}
+
+.circle-text-top span {
+	border-top: 5px solid;
+	font-size: 56px;
+}
+
+.circle-text-bottom	{
+	margin-top: -20px !important;
+	margin-bottom: 20px !important;
+}
+
+.circle-text-bottom span {
+	border-bottom: 5px solid;
+	font-size: 56px;
+}
+
+@media screen and (min-width:$screen-lg) {
+	.circle-text-subtext span {
+		font-size: 19px !important;
+	}	
+}
+
+.circle-text-subtext span {
+	font-size: 16px;
+}
+
+/*--------------------------------------------------------------
+5.0 - Navigation
+--------------------------------------------------------------*/
+.navbar-default {
+	background-color: transparent;
+	border: 0;
+	padding: 25px 0;
+	transition: padding .3s;
+}
