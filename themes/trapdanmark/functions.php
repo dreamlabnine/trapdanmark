@@ -104,6 +104,8 @@ function trapdanmark_scripts() {
 
 	wp_enqueue_style( 'trapdanmark-custom-style', get_template_directory_uri() . '/css/trapdanmark.css' );
 
+	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() . '/js/modernizr.custom.86080.js');
+
 	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	// 	wp_enqueue_script( 'comment-reply' );
 	// }

@@ -16,23 +16,28 @@ Template Name: Forside
 
 get_header(); ?>
 
-	<!-- Header -->
-		<div class="container-fluid intro">
-			<div class="circle-text-outer">
-				<div class="circle-text">
-					<div class="circle-text-inner">
-						<div class="circle-text-top"><span>OPDAG</span></div>
-						<div class="circle-text-bottom"><span>DANMARK</span></div>
-						<div class="circle-text-subtext">
-							<span>Et nyt storværk er på vej.<br>Trap Danmark vil samle al 
+	<ul class="cb-slideshow">
+        <li><span>Image 01</span></li>
+        <li><span>Image 02</span></li>
+        <li><span>Image 03</span></li>
+        <li><span>Image 04</span></li>
+        <li><span>Image 05</span></li>
+    </ul>
+
+	<div class="container-fluid intro">
+		<div class="circle-text-outer">
+			<div class="circle-text">
+				<div class="circle-text-inner">
+					<div class="circle-text-top"><span>OPDAG</span></div>
+					<div class="circle-text-bottom"><span>DANMARK</span></div>
+					<div class="circle-text-subtext">
+						<span>Et nyt storværk er på vej.<br>Trap Danmark vil samle al 
 væsentlig viden om Danmark på ét sted og gøre den tilgængelig overalt.</span>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-
+	</div>
 	
 
 <?php get_footer(); ?>
