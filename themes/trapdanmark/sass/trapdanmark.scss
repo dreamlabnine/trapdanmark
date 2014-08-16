@@ -43,6 +43,7 @@ and Blueprint http://www.blueprintcss.org/
 12.0 - Media
 	12.1 - Captions
 	12.2 - Galleries
+13.0 - Footer
 --------------------------------------------------------------*/
 
 $screen-xs: 767px;
@@ -76,7 +77,7 @@ body {
 .cb-slideshow:after { 
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 780px;
 	top: 0px;
 	left: 0px;
 	z-index: 0; 
@@ -115,12 +116,6 @@ body {
 	z-index: 0;
 	-webkit-backface-visibility: hidden;
 	@include slideshow-animation(30s); 
-}
-
-.cb-slideshow div {
-	position: relative;
-	display: inline;
-	top: 300px;
 }
 
 
@@ -216,6 +211,13 @@ body {
 
 .intro {
 	position: relative;
+	height: 780px;
+	display: table;
+}
+
+.circle-container {
+	vertical-align: middle;
+	display: table-cell;
 }
 
 @media screen and (max-width:$screen-xs){
@@ -228,7 +230,7 @@ body {
 
 @media screen and (min-width:$screen-sm){
 	.circle-text {
-		width:50%;
+		width:100%;
 		max-width: 500px;
 		margin: auto;
 	}
@@ -257,7 +259,7 @@ body {
 }
 
 .circle-text-outer {
-	padding: 200px 0;
+	// padding: 140px 0;
 }
 
 .circle-text-inner div {
@@ -293,12 +295,93 @@ body {
 	font-size: 16px;
 }
 
+.separator {
+	display: table;
+	height: 60px;
+	background: white;
+}
+
+.separator-text {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 28px;
+	color: #4D4D4D;
+	font-weight: bold;
+}
+
+.donator-container {
+	height: 220px;
+	background-color: #EFEFEF;
+	border: 1px solid #E6E6E6;
+	display: table;
+}
+
+.donator-container:hover {
+	background-color: #EB002C;
+	border: 1px solid #EB002C;
+}
+
+.donator-container:hover .donator-image-hover {
+	display: block !important;
+	opacity: 1;
+}
+
+.donator-container:hover .donator-image {
+	display: none;
+}
+
+.donator-container a {
+	height: 220px;
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.donator-image-hover {
+	display: none;
+}
+
 /*--------------------------------------------------------------
 5.0 - Navigation
 --------------------------------------------------------------*/
 .navbar-default {
 	background-color: transparent;
 	border: 0;
-	padding: 25px 0;
+	padding: 25px 20px 25px 30px;
 	transition: padding .3s;
+}
+
+.navbar-default .logo {
+	margin-top: -25px;
+	// padding-left: 30px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #FFFFFF;
+	font-size: 17px;
+	text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+	color: #EB002C;
+}
+
+/*--------------------------------------------------------------
+13.0 - Footer
+--------------------------------------------------------------*/
+.site-footer {
+	background-color: #000000;
+	color: #FFFFFF;
+	height: 40px;
+	padding-left: 30px;
+	display: table;
+}
+
+.site-footer span {
+	display: table-cell;
+	vertical-align: middle;
+	height: 40px;
+	text-transform: uppercase;
 }

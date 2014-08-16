@@ -34,7 +34,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="#page-top">Trap Danmark</a>
+					<a class="navbar-brand page-scroll" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<img class="logo" src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>">
+					</a>
 				</div>
 
 				<?php wp_nav_menu( array( 
