@@ -136,3 +136,188 @@ require get_template_directory() . '/inc/template-tags.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+
+/**
+ * Use the embedded Titan Framework
+ *
+ * When using the embedded framework, use it only if the framework
+ * plugin isn't activated.
+ *
+ * @since TrapDanmark 0.5
+ */
+
+// Don't do anything when we're activating a plugin to prevent errors
+// on redeclaring Titan classes
+if ( ! empty( $_GET['action'] ) && ! empty( $_GET['plugin'] ) ) {
+    if ( $_GET['action'] == 'activate' ) {
+        return;
+    }
+}
+// Check if the framework plugin is activated
+$useEmbeddedFramework = true;
+$activePlugins = get_option('active_plugins');
+if ( is_array( $activePlugins ) ) {
+    foreach ( $activePlugins as $plugin ) {
+        if ( is_string( $plugin ) ) {
+            if ( stripos( $plugin, '/inc/titan-framework.php' ) !== false ) {
+                $useEmbeddedFramework = false;
+                break;
+            }
+        }
+    }
+}
+if ( $useEmbeddedFramework && ! class_exists( 'TitanFramework' ) ) {
+    require_once( trailingslashit( dirname( __FILE__ ) ) . '/inc/titan-framework/titan-framework.php' );
+}
+$titan = TitanFramework::getInstance( 'trapdanmark' );
+require get_template_directory() . '/inc/theme-options.php';
+
+
+
+/**
+ * Use the embedded meta-box Framework
+ *
+ * @since TrapDanmark 0.5
+ */
+
+// Re-define meta box path and URL
+define( 'RWMB_URL', trailingslashit( get_stylesheet_directory_uri() . '/inc/meta-box' ) );
+define( 'RWMB_DIR', trailingslashit( STYLESHEETPATH . '/inc/meta-box' ) );
+// Include the meta box script
+require_once RWMB_DIR . 'meta-box.php';
+// Include the meta box definition (the file where you define meta boxes, see `demo/demo.php`)
+include RWMB_DIR . 'config-meta-boxes.php';
+
+
+
+/**
+ * Register Custom Post Type: Persons
+ *
+ * @since 0.0.5
+ */
+
+function personer() {
+
+	$labels = array(
+		'name'                => _x( 'Personer', 'Post Type General Name', 'trapdanmark' ),
+		'singular_name'       => _x( 'Person', 'Post Type Singular Name', 'trapdanmark' ),
+		'menu_name'           => __( 'Personer', 'trapdanmark' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'trapdanmark' ),
+		'all_items'           => __( 'Alle personer', 'trapdanmark' ),
+		'view_item'           => __( 'Se person', 'trapdanmark' ),
+		'add_new_item'        => __( 'Tilføj ny person', 'trapdanmark' ),
+		'add_new'             => __( 'Tilføj ny', 'trapdanmark' ),
+		'edit_item'           => __( 'Ændre person', 'trapdanmark' ),
+		'update_item'         => __( 'Opdater person', 'trapdanmark' ),
+		'search_items'        => __( 'Søg person', 'trapdanmark' ),
+		'not_found'           => __( 'Ikke fundet', 'trapdanmark' ),
+		'not_found_in_trash'  => __( 'Ikke fundet i affaldskurv', 'trapdanmark' ),
+	);
+	$args = array(
+		'label'               => __( 'personer', 'trapdanmark' ),
+		'description'         => __( 'Personer', 'trapdanmark' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'thumbnail' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 20,
+		'menu_icon'           => 'dashicons-groups',
+		'can_export'          => true,
+		'has_archive'         => false,
+		'exclude_from_search' => true,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'personer', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'personer', 0 );
+
+
+/******************************************
+ * Custom functions
+ ******************************************/
+
+/**
+ * Creates a nicely formatted breadcrumb.
+ *
+ * @since TrapDanmark 0.5
+ */
+function the_breadcrumb() {
+    global $post;
+    echo '<ul id="breadcrumbs">';
+    if (!is_home()) {
+        echo '<li class="pretext">DU ER HER:</li>';
+        echo '<li><a href="';
+        echo get_option('home');
+        echo '">';
+        echo 'Forside';
+        echo '</a></li><li class="breadcrumb_separator"> > </li>';
+        if (is_category() || is_single()) {
+            echo '<li>';
+            the_category(' </li><li class="breadcrumb_separator"> > </li><li> ');
+            if (is_single()) {
+                echo '</li><li class="breadcrumb_separator"> > </li><li>';
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_page()) {
+            if($post->post_parent){
+                $anc = get_post_ancestors( $post->ID );
+                $title = get_the_title();
+                foreach ( $anc as $ancestor ) {
+                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li> <li class="breadcrumb_separator">></li>';
+                }
+                echo $output;
+                echo '<strong title="'.$title.'"> '.$title.'</strong>';
+            } else {
+                echo '<li><strong> '.get_the_title().'</strong></li>';
+            }
+        }
+    }
+    elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
+    echo '</ul>';
+}
+
+/**
+ * Creates a nicely formatted and more specific title element text
+ * for output in head of document, based on current view.
+ *
+ * @since TrapDanmark 0.5
+ *
+ * @param string $title Default title text for current view.
+ * @param string $sep Optional separator.
+ * @return string Filtered title.
+ */
+function trapdanmark_wp_title( $title, $sep ) {
+	global $paged, $page;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
+
+	return $title;
+}
+add_filter( 'wp_title', 'trapdanmark_wp_title', 10, 2 );
+

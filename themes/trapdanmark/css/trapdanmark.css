@@ -51,8 +51,36 @@ and Blueprint http://www.blueprintcss.org/
 ul {
   margin-left: 0px; }
 
+a, a:hover, a:visited {
+  color: #000000; }
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.col-xs-15 {
+  width: 20%;
+  float: left; }
+
+@media (min-width: 768px) {
+  .col-sm-15 {
+    width: 20%;
+    float: left; } }
+@media (min-width: 992px) {
+  .col-md-15 {
+    width: 20%;
+    float: left; } }
+@media (min-width: 1200px) {
+  .col-lg-15 {
+    width: 20%;
+    float: left; } }
 /*--------------------------------------------------------------
-2.0 - Elements
+2.0 - Typography
 --------------------------------------------------------------*/
 body {
   font-family: 'Droid Sans'; }
@@ -266,7 +294,30 @@ body {
 .intro {
   position: relative;
   height: 780px;
-  display: table; }
+  display: table;
+  background-size: cover !important; }
+
+.intro-inner {
+  display: table-cell;
+  vertical-align: middle;
+  width: 545px;
+  text-align: center;
+  color: #FFFFFF; }
+
+.intro-header {
+  padding-bottom: 15px;
+  text-transform: uppercase; }
+
+.intro-header span {
+  border-bottom: 5px solid;
+  font-size: 56px;
+  font-weight: bold; }
+
+.intro-text span {
+  font-size: 17px; }
+
+.read-more {
+  padding-top: 20px; }
 
 .circle-container {
   vertical-align: middle;
@@ -366,6 +417,135 @@ body {
 
 .donator-image-hover {
   display: none; }
+
+.section-about {
+  display: table;
+  height: 450px; }
+
+.pattern {
+  background-color: #FFFFFF; }
+
+.section-about-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 600px; }
+
+.section-about-middle-header {
+  padding: 30px 0 10px 0; }
+
+.section-about-middle-header span, .section-team_behind-header span, .section-partners-header span {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 3px solid #B3B3B3; }
+
+.section-about-middle-text span, .section-team_behind-text span, .section-partners-text span {
+  font-size: 17px;
+  width: 500px; }
+
+.section-team_behind, .section-partners {
+  display: table;
+  height: 360px; }
+
+.section-team_behind-inner, .section-partners-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
+
+.section-team_behind-header, .section-partners-header {
+  padding-bottom: 10px; }
+
+.section-team_behind-header, .section-team_behind-text, .section-partners-header, .section-partners-text {
+  color: #FFFFFF; }
+
+@media screen and (min-width: 992px) {
+  .page-featured-image {
+    height: 250px !important; } }
+@media screen and (min-width: 1200px) {
+  .page-featured-image {
+    height: 350px !important; } }
+.page-featured-image {
+  background-size: cover !important;
+  height: 150px; }
+
+.page-container {
+  background-color: #FFFFFF;
+  padding: 10px 40px; }
+
+.page-team-container {
+  background-color: #FFFFFF;
+  padding: 0px; }
+
+#breadcrumbs {
+  list-style: none;
+  margin: 10px 0;
+  overflow: hidden; }
+
+#breadcrumbs li {
+  float: left;
+  margin-right: 10px; }
+
+#breadcrumbs .pretext {
+  color: #ED0633; }
+
+.entry-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 3px solid #E6E6E6;
+  padding-bottom: 5px; }
+
+.entry-content {
+  font-size: 19px; }
+
+h4.panel-title:after {
+  content: '';
+  background: url("../images/arrow.gif") no-repeat;
+  height: 50px;
+  width: 50px;
+  float: right; }
+
+.panel-group {
+  margin-bottom: 0; }
+
+.panel-group .panel {
+  border-radius: 0; }
+
+.panel-title {
+  margin-top: -10px;
+  display: table;
+  width: 100%; }
+
+.panel-default > .panel-heading {
+  height: 50px;
+  padding: 10px 0 0 40px; }
+
+.panel-group .panel + .panel {
+  margin-top: 0px; }
+
+.panel-title span {
+  display: table-cell;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-size: 19px;
+  color: #666666;
+  font-weight: bold; }
+
+.panel-body {
+  padding: 0px; }
+
+ul.team-list {
+  list-style-image: url(../images/list-flag.png) !important;
+  padding: 15px 60px;
+  font-size: 16px;
+  color: #666666; }
+
+.team-list li {
+  padding-top: 5px;
+  padding-left: 5px; }
+
+.no-padding {
+  padding: 0 !important; }
 
 /*--------------------------------------------------------------
 5.0 - Navigation

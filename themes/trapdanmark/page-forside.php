@@ -40,7 +40,9 @@ get_header(); ?>
 			</div>
 		</div>
 	</div>
-
+	<div class="col-xs-12 separator">
+		<div class="separator-text">VORES DONATORER</div>
+	</div>
 	<?php get_template_part( 'content', 'donator' ); ?>
 
 <?php get_footer(); ?>
