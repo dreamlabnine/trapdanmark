@@ -56,14 +56,6 @@ function trapdanmark_setup() {
 		'gallery', 'caption'
 	) );
 
-	/*
-	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
-	// add_theme_support( 'post-formats', array(
-	// 	'aside', 'image', 'video', 'quote', 'link'
-	// ) );
-
 	// Setup the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'trapdanmark_custom_background_args', array(
 		'default-color' => 'ffffff',
@@ -72,24 +64,6 @@ function trapdanmark_setup() {
 }
 endif; // trapdanmark_setup
 add_action( 'after_setup_theme', 'trapdanmark_setup' );
-
-/**
- * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-// function trapdanmark_widgets_init() {
-// 	register_sidebar( array(
-// 		'name'          => __( 'Sidebar', 'trapdanmark' ),
-// 		'id'            => 'sidebar-1',
-// 		'description'   => '',
-// 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-// 		'after_widget'  => '</aside>',
-// 		'before_title'  => '<h1 class="widget-title">',
-// 		'after_title'   => '</h1>',
-// 	) );
-// }
-// add_action( 'widgets_init', 'trapdanmark_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -147,7 +121,6 @@ require get_template_directory() . '/inc/jetpack.php';
  *
  * @since TrapDanmark 0.5
  */
-
 // Don't do anything when we're activating a plugin to prevent errors
 // on redeclaring Titan classes
 if ( ! empty( $_GET['action'] ) && ! empty( $_GET['plugin'] ) ) {
@@ -181,7 +154,6 @@ require get_template_directory() . '/inc/theme-options.php';
  *
  * @since TrapDanmark 0.5
  */
-
 // Re-define meta box path and URL
 define( 'RWMB_URL', trailingslashit( get_stylesheet_directory_uri() . '/inc/meta-box' ) );
 define( 'RWMB_DIR', trailingslashit( STYLESHEETPATH . '/inc/meta-box' ) );
@@ -197,9 +169,7 @@ include RWMB_DIR . 'config-meta-boxes.php';
  *
  * @since 0.0.5
  */
-
 function personer() {
-
 	$labels = array(
 		'name'                => _x( 'Personer', 'Post Type General Name', 'trapdanmark' ),
 		'singular_name'       => _x( 'Person', 'Post Type Singular Name', 'trapdanmark' ),
@@ -235,9 +205,7 @@ function personer() {
 		'capability_type'     => 'page',
 	);
 	register_post_type( 'personer', $args );
-
 }
-
 // Hook into the 'init' action
 add_action( 'init', 'personer', 0 );
 
@@ -250,6 +218,7 @@ add_action( 'init', 'personer', 0 );
  * Creates a nicely formatted breadcrumb.
  *
  * @since TrapDanmark 0.5
+ * @return formatted breadcrumb list 
  */
 function the_breadcrumb() {
     global $post;
@@ -321,3 +290,79 @@ function trapdanmark_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'trapdanmark_wp_title', 10, 2 );
 
+
+/**
+ * Get the full title if available
+ *
+ * @since TrapDanmark 0.6
+ *
+ * @param string $ID ID for person.
+ * @return string Filtered title.
+ */
+function get_full_title($ID) {
+	$full_title = (rwmb_meta( 'trapdanmark_name_with_title', $args = array(), $post_id = $ID )) ? rwmb_meta( 'trapdanmark_name_with_title', $args = array(), $post_id = $ID ) : get_the_title($ID);
+	return $full_title;
+}
+
+
+/**
+ * Get the persons position if available
+ *
+ * @since TrapDanmark 0.6
+ *
+ * @param string $ID ID for person.
+ * @return string Filtered position.
+ */
+function get_position($ID) {
+	$position = (rwmb_meta( 'trapdanmark_position', $args = array(), $post_id = $ID )) ? ', ' . rwmb_meta( 'trapdanmark_position', $args = array(), $post_id = $ID ) : '';
+	return $position;
+}
+
+
+/**
+ * Get the profile picture if available or a placeholder if not
+ *
+ * @since TrapDanmark 0.6
+ *
+ * @param string $ID ID for person.
+ * @return string Filtered position.
+ */
+function get_profile_picture($ID) {
+	$profile_picture = wp_get_attachment_url( get_post_thumbnail_id($ID) ) ? wp_get_attachment_url( get_post_thumbnail_id($ID) ) : 'http://placehold.it/240x180';
+	return $profile_picture;
+}
+
+
+/**
+ * Lists all people in an array with the their ID
+ *
+ * @since TrapDanmark 0.6
+ *
+ * @return array with ID.
+ */
+function list_people()
+{
+	$args = array(
+	'posts_per_page'   => -1,
+	'offset'           => 0,
+	'category'         => '',
+	'orderby'          => 'title',
+	'order'            => 'ASC',
+	'include'          => '',
+	'exclude'          => '',
+	'meta_key'         => '',
+	'meta_value'       => '',
+	'post_type'        => 'personer',
+	'post_mime_type'   => '',
+	'post_parent'      => '',
+	'post_status'      => 'publish',
+	'suppress_filters' => true ); 
+
+	$personer = get_posts( $args );
+
+	foreach ($personer as $person) {
+		$people_array[$person->ID] = $person->post_title;
+	}
+
+	return $people_array;
+}

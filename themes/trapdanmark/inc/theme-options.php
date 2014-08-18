@@ -18,10 +18,10 @@ $frontpage = $TrapDanmarkPanel->createTab( array(
  * HOME PAGE SLIDER
  *********************************/
 
-$frontpage->createOption( array(
-    'name' => 'FORSIDE Slider',
-    'type' => 'heading',
-) );
+// $frontpage->createOption( array(
+//     'name' => 'FORSIDE Slider',
+//     'type' => 'heading',
+// ) );
 
 
 /**********************************
@@ -31,6 +31,7 @@ $about_us = $TrapDanmarkPanel->createTab( array(
 	'name' => 'OM OS',
 ) );
 
+// Splash boks
 $about_us->createOption( array(
     'name' => 'Splash boks',
     'type' => 'heading',
@@ -56,7 +57,7 @@ $about_us->createOption( array(
 	'desc'		=> 'Hvis den skal have en anden overskift end den valgtes sides overskift'
 ) );
 
-
+// Midt sektion
 $about_us->createOption( array(
     'name' => 'Midt sektion',
     'type' => 'heading',
@@ -82,7 +83,7 @@ $about_us->createOption( array(
 	'desc'		=> 'Hvis den skal have en anden overskift end den valgtes sides overskift'
 ) );
 
-
+// Bund venstre boks
 $about_us->createOption( array(
     'name' => 'Bund venstre boks',
     'type' => 'heading',
@@ -108,7 +109,7 @@ $about_us->createOption( array(
 	'desc'		=> 'Hvis den skal have en anden overskift end den valgtes sides overskift'
 ) );
 
-
+// Bund højre boks
 $about_us->createOption( array(
     'name' => 'Bund højre boks',
     'type' => 'heading',
@@ -138,36 +139,76 @@ $about_us->createOption( array(
 /**********************************
  * THE TEAM BEHIND
  *********************************/
+$person_array = list_people();
+
 $team = $TrapDanmarkPanel->createTab( array(
 	'name' => 'HOLDET BAG',
 ) );
 
+// Bestyrelsen
+$team->createOption( array(
+    'name' => 'Bestyrelsen',
+    'type' => 'heading',
+) );
 
-$args = array(
-	'posts_per_page'   => -1,
-	'offset'           => 0,
-	'category'         => '',
-	'orderby'          => 'title',
-	'order'            => 'ASC',
-	'include'          => '',
-	'exclude'          => '',
-	'meta_key'         => '',
-	'meta_value'       => '',
-	'post_type'        => 'personer',
-	'post_mime_type'   => '',
-	'post_parent'      => '',
-	'post_status'      => 'publish',
-	'suppress_filters' => true ); 
-$personer = get_posts( $args );
-foreach ($personer as $person) {
-	$person_array[$person->ID] = $person->post_title;
-}
 $team->createOption( array(
     'name' => 'Bestyrelsen',
     'id' => 'team_board_members',
     'type' => 'sortable',
-    'desc' => 'Kun 6 vil blive vist',
+    'desc' => 'Fravælg personer ikke i bestyrelsen og sorter dem. Kun 6 kan vises.',
     'options' => $person_array
+) );
+
+// Redaktionen
+$team->createOption( array(
+    'name' => 'Redaktionen',
+    'type' => 'heading',
+) );
+
+$team->createOption( array(
+    'name' => 'Redaktionen',
+    'id' => 'team_editors',
+    'type' => 'sortable',
+    'desc' => 'Fravælg personer ikke i redaktionen og sorter dem. Kun 2 kan vises.',
+    'options' => $person_array
+) );
+
+$team->createOption( array(
+	'name' => 'Tekst',
+	'id' => 'team_editors_text',
+	'type' => 'editor',
+) );
+
+// Forfattere og konsulenter
+$team->createOption( array(
+    'name' => 'Forfattere og konsulenter',
+    'type' => 'heading',
+) );
+
+$team->createOption( array(
+	'name' => 'Tekst',
+	'id' => 'team_writers_text',
+	'type' => 'editor',
+) );
+
+// Trap rådet
+$team->createOption( array(
+    'name' => 'Trap rådet',
+    'type' => 'heading',
+) );
+
+$team->createOption( array(
+    'name' => 'Trap rådet',
+    'id' => 'team_group',
+    'type' => 'sortable',
+    'desc' => 'Fravælg personer ikke i Trap rådet og sorter dem. Kun 10 kan vises.',
+    'options' => $person_array
+) );
+
+$team->createOption( array(
+	'name' => 'Tekst',
+	'id' => 'team_group_text',
+	'type' => 'editor',
 ) );
 
 /**********************************

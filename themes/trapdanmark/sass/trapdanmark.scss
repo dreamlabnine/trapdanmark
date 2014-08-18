@@ -572,6 +572,35 @@ ul.team-list {
 	padding-left: 5px;
 }
 
+.team-members:nth-child(even) {
+	background-color: #F1F1F1;
+}
+
+.team-members:nth-child(odd) {
+	background-color: #FCFCFC;
+}
+
+.team-members-name {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+	color: #666666;
+}
+
+.team-editors .team-members-name {
+	background-color: #F0F0F0;
+}
+
+.team-editors, .team-writers, .team-group {
+	padding: 20px 30px;
+}
+
+.team-editors-text, .team-writers-text, .team-group-text {
+	font-size: 16px;
+	color: #666666;
+}
+
 .no-padding {
 	padding: 0 !important;
 }
