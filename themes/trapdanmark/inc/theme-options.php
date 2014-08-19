@@ -211,6 +211,53 @@ $team->createOption( array(
 	'type' => 'editor',
 ) );
 
+
+/**********************************
+ * DONATORS TAB
+ *********************************/
+
+$donator = $TrapDanmarkPanel->createTab( array(
+	'name' => 'DONATORER',
+) );
+
+for ($i=1; $i <= 4; $i++) { 
+
+	// Donator #1
+	$donator->createOption( array(
+	    'name' => 'Donator #' . $i,
+	    'type' => 'heading',
+	) );
+	$donator->createOption( array(
+		'name' => 'Logo',
+		'id' => 'donator_logo_normal_' . $i,
+		'type' => 'upload',
+	) );
+	$donator->createOption( array(
+		'name' => 'Logo (hover)',
+		'id' => 'donator_logo_hover_' . $i,
+		'type' => 'upload',
+	) );
+	$donator->createOption( array(
+		'name' => 'Link',
+		'id' => 'donator_logo_link_' . $i,
+		'type' => 'text',
+	) );
+}
+
+/**********************************
+ * FOOTER TAB
+ *********************************/
+
+$footer = $TrapDanmarkPanel->createTab( array(
+	'name' => 'FOOTER',
+) );
+
+$footer->createOption( array(
+	'name' => 'Copyright tekst',
+	'id' => 'footer_copyright',
+	'type' => 'text',
+) );
+
 /**********************************
  * SAVE AND RESET BUTTON
  *********************************/

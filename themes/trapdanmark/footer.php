@@ -6,13 +6,15 @@
  *
  * @package TrapDanmark
  */
+
+$titan = TitanFramework::getInstance( 'trapdanmark' );
 ?>
 
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="col-sx-12">
-			<span>Copyright by Trap Danmark 2014</span>
+			<span><?php echo $titan->getOption('footer_copyright'); ?></span>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

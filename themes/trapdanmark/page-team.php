@@ -110,7 +110,7 @@ get_header(); ?>
 									</h4>
 								</a>
 							</div>
-							<div id="collapseFour" class="panel-collapse collapse in">
+							<div id="collapseFour" class="panel-collapse collapse">
 								<div class="panel-body">
 									<div class="team-group team-group-text">
 									<?php echo $titan->getOption( 'team_group_text' ); ?>

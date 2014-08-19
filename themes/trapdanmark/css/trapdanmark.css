@@ -85,11 +85,17 @@ a, a:hover, a:visited {
 body {
   font-family: 'Droid Sans'; }
 
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 30px; } }
 /*--------------------------------------------------------------
 3.0 - Elements
 --------------------------------------------------------------*/
 body {
   background-color: black; }
+
+div#content {
+  z-index: 0; }
 
 .cb-slideshow,
 .cb-slideshow:after {
@@ -293,6 +299,7 @@ body {
 
 .intro {
   position: relative;
+  top: -0;
   height: 780px;
   display: table;
   background-size: cover !important; }
@@ -310,7 +317,7 @@ body {
 
 .intro-header span {
   border-bottom: 5px solid;
-  font-size: 56px;
+  font-size: 36px;
   font-weight: bold; }
 
 .intro-text span {
@@ -345,7 +352,10 @@ body {
     border-radius: 50%; }
 
   .circle-text .circle-text-inner {
-    padding-top: 50%; } }
+    padding-top: 50%; }
+
+  .intro-header span {
+    font-size: 56px; } }
 .circle-text .circle-text-inner {
   float: left;
   width: 100%;
@@ -360,14 +370,20 @@ body {
 
 .circle-text-top span {
   border-top: 5px solid;
-  font-size: 56px;
+  font-size: 36px;
   font-weight: bold; }
 
 .circle-text-bottom span {
   border-bottom: 5px solid;
-  font-size: 56px;
+  font-size: 36px;
   font-weight: bold; }
 
+@media screen and (min-width: 768px) {
+  .circle-text-top span {
+    font-size: 56px; }
+
+  .circle-text-bottom span {
+    font-size: 56px; } }
 .circle-text-bottom {
   margin-top: -20px !important;
   margin-bottom: 20px !important; }
@@ -418,9 +434,14 @@ body {
 .donator-image-hover {
   display: none; }
 
+.about-splash {
+  height: 780px;
+  background-size: cover !important;
+  display: table; }
+
 .section-about {
   display: table;
-  height: 450px; }
+  height: 580px; }
 
 .pattern {
   background-color: #FFFFFF; }
@@ -435,7 +456,7 @@ body {
   padding: 30px 0 10px 0; }
 
 .section-about-middle-header span, .section-team_behind-header span, .section-partners-header span {
-  font-size: 50px;
+  font-size: 36px;
   text-transform: uppercase;
   font-weight: bold;
   border-bottom: 3px solid #B3B3B3; }
@@ -459,6 +480,9 @@ body {
 .section-team_behind-header, .section-team_behind-text, .section-partners-header, .section-partners-text {
   color: #FFFFFF; }
 
+@media screen and (min-width: 768px) {
+  .section-about-middle-header span, .section-team_behind-header span, .section-partners-header span {
+    font-size: 50px; } }
 @media screen and (min-width: 992px) {
   .page-featured-image {
     height: 250px !important; } }
@@ -496,8 +520,11 @@ body {
   padding-bottom: 5px; }
 
 .entry-content {
-  font-size: 19px; }
+  font-size: 16px; }
 
+@media screen and (min-width: 768px) {
+  .entry-content {
+    font-size: 19px; } }
 h4.panel-title:after {
   content: '';
   background: url("../images/arrow.gif") no-repeat;
@@ -576,17 +603,43 @@ ul.team-list {
 .navbar-default {
   background-color: transparent;
   border: 0;
-  padding: 25px 20px 25px 30px;
-  transition: padding .3s; }
+  padding: 0px;
+  transition: padding .3s;
+  z-index: 2;
+  margin-bottom: -100px; }
 
-.navbar-default .logo {
-  margin-top: -25px; }
+img.logo {
+  height: 48px; }
 
 .navbar-default .navbar-nav > li > a {
   color: #FFFFFF;
   font-size: 17px;
   text-transform: uppercase; }
 
+@media screen and (max-width: 767px) {
+  .navbar-header.page-scroll {
+    height: 59px; }
+
+  .navbar-brand {
+    padding: 5px 10px; }
+
+  .navbar-default .navbar-collapse {
+    background-color: #FFFFFF; }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #000000;
+    font-size: 15px;
+    text-transform: uppercase; }
+
+  .navbar-default .navbar-toggle {
+    background-color: #FFFFFF; } }
+@media screen and (min-width: 768px) {
+  img.logo {
+    margin-left: 20px;
+    height: initial; }
+
+  .navbar-default .navbar-collapse {
+    margin-top: 40px; } }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #EB002C; }
 

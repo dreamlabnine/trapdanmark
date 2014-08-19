@@ -38,7 +38,7 @@ function getOption($slug, $option)
 		case 'image':
 			$result['image'] = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' . wp_get_attachment_url( get_post_thumbnail_id($option_page_id) ) . ') center center';
 			break;
-			
+
 	}
 	
 	return $result[$option];
@@ -47,7 +47,7 @@ function getOption($slug, $option)
 ?>
 
 	<!-- Splash section -->
-	<div class="container-fluid intro col-xs-12" style="background: linear-gradient(
+	<div class="container-fluid about-splash col-xs-12" style="background: linear-gradient(
       rgba(0, 0, 0, 0.7), 
       rgba(0, 0, 0, 0.7)
     ), url(<?php echo get_template_directory_uri() . '/images/1.jpg'; ?>);">
