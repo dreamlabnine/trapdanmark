@@ -5,13 +5,6 @@
  * @package TrapDanmark
  */
 
-/**
- * Set the content width based on the theme's design and stylesheet.
- */
-// if ( ! isset( $content_width ) ) {
-// 	$content_width = 640; /* pixels */
-// }
-
 if ( ! function_exists( 'trapdanmark_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -49,9 +42,6 @@ function trapdanmark_setup() {
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	// add_theme_support( 'html5', array(
-	// 	'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-	// ) );
 	add_theme_support( 'html5', array(
 		'gallery', 'caption'
 	) );
@@ -80,9 +70,6 @@ function trapdanmark_scripts() {
 
 	wp_enqueue_script( 'modernizr-js', get_template_directory_uri() . '/js/modernizr.custom.86080.js');
 
-	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-	// 	wp_enqueue_script( 'comment-reply' );
-	// }
 }
 add_action( 'wp_enqueue_scripts', 'trapdanmark_scripts' );
 
@@ -95,16 +82,6 @@ require get_template_directory() . '/inc/custom-header.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
-// require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
-// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.

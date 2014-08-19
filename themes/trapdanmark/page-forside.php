@@ -32,8 +32,7 @@ get_header(); ?>
 						<div class="circle-text-top"><span>OPDAG</span></div>
 						<div class="circle-text-bottom"><span>DANMARK</span></div>
 						<div class="circle-text-subtext">
-							<span>Et nyt storværk er på vej.<br>Trap Danmark vil samle al 
-	væsentlig viden om Danmark på ét sted og gøre den tilgængelig overalt.</span>
+							<span>Et nyt storværk er på vej.<br>Trap Danmark vil samle al væsentlig viden om Danmark på ét sted og gøre den tilgængelig overalt.</span>
 						</div>
 					</div>
 				</div>
