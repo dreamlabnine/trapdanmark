@@ -114,7 +114,7 @@ body {
 3.0 - Elements
 --------------------------------------------------------------*/
 body {
-	background-color: black;
+	background-color: #FFFFFF;
 }
 
 div#content {
@@ -156,7 +156,7 @@ div#content {
 	top: 0px;
 	left: 0px;
 	color: transparent;
-	background-size: cover;
+	background-size: cover !important;
 	background-position: 50% 50%;
 	background-repeat: none;
 	opacity: 0;
@@ -166,26 +166,26 @@ div#content {
 }
 
 .cb-slideshow li:nth-child(1) span { 
-	background-image: url(../images/1.jpg) 
+	// background-image: url(../images/1.jpg) 
 }
 .cb-slideshow li:nth-child(2) span { 
-	background-image: url(../images/2.jpg);
+	// background-image: url(../images/2.jpg);
 	@include slideshow-animation-delay(6s); 
 }
 .cb-slideshow li:nth-child(3) span { 
-	background-image: url(../images/3.jpg);
+	// background-image: url(../images/3.jpg);
 	@include slideshow-animation-delay(12s); 
 }
 .cb-slideshow li:nth-child(4) span { 
-	background-image: url(../images/4.jpg);
+	// background-image: url(../images/4.jpg);
 	@include slideshow-animation-delay(18s);  
 }
 .cb-slideshow li:nth-child(5) span { 
-	background-image: url(../images/5.jpg);
+	// background-image: url(../images/5.jpg);
 	@include slideshow-animation-delay(24s); 
 }
 .cb-slideshow li:nth-child(6) span { 
-	background-image: url(../images/6.jpg);
+	// background-image: url(../images/6.jpg);
 	@include slideshow-animation-delay(30s);  
 }
 
@@ -241,7 +241,7 @@ div#content {
 .intro {
 	position: relative;
 	top: -0;
-	height: 780px;
+	height: 580px;
 	display: table;
 	background-size: cover !important;
 }
@@ -252,6 +252,7 @@ div#content {
 	width: 545px;
 	text-align: center;
 	color: #FFFFFF;
+	opacity: 0;
 }
 
 .intro-header {
@@ -287,10 +288,15 @@ div#content {
 
 
 @media screen and (min-width:$screen-sm){
+	.intro {
+		height: 780px;
+	}
+
 	.circle-text {
 		width:100%;
-		max-width: 500px;
+		max-width: 200px;
 		margin: auto;
+		opacity: 0;
 	}
 	.circle-text:after {
 		content: "";
@@ -313,11 +319,12 @@ div#content {
 }
 
 .circle-text .circle-text-inner {
-	float:left;
-	width:100%;
-	margin-top:-8.5em;
-	text-align:center;
-	color:white;
+	float: left;
+	width: 100%;
+	margin-top: -8.5em;
+	text-align: center;
+	color: white;
+	opacity: 0;
 }
 
 .circle-text-outer {
@@ -417,7 +424,7 @@ div#content {
 
 
 .about-splash {
-	height: 780px;
+	height: 480px;
 	background-size: cover !important;
 	display: table;
 }
@@ -428,7 +435,7 @@ div#content {
 }
 
 .pattern {
-	background-color: #FFFFFF;
+	background: #FFFFFF url(../images/pattern_detnyetrapbg.png) repeat;
 }
 
 .section-about-inner {
@@ -443,7 +450,7 @@ div#content {
 }
 
 .section-about-middle-header span, .section-team_behind-header span, .section-partners-header span {
-	font-size: 36px;
+	font-size: 30px;
 	text-transform: uppercase;
 	font-weight: bold;
 	border-bottom: 3px solid #B3B3B3;
@@ -476,6 +483,10 @@ div#content {
 @media screen and (min-width: $screen-sm) {
 	.section-about-middle-header span, .section-team_behind-header span, .section-partners-header span {
 		font-size: 50px;
+	}
+
+	.about-splash {
+		height: 780px;
 	}
 }
 
@@ -733,6 +744,7 @@ img.logo {
 	height: 40px;
 	padding-left: 30px;
 	display: table;
+	width: 100%;
 }
 
 .site-footer span {

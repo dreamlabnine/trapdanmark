@@ -44,7 +44,7 @@ get_header(); ?>
 									</h4>
 								</a>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse">
+							<div id="collapseOne" class="panel-collapse collapse in">
 								<div class="panel-body">
 									<ul class="team-list">
 										<?php foreach ($board_members as $board_member_id) {

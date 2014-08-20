@@ -64,7 +64,7 @@ function getOption($slug, $option)
 	<!-- Middle section -->
 	<div class="container-fluid col-xs-12 section-about pattern">
 		<div class="section-about-inner">
-			<div><img src="<?php echo get_template_directory_uri() . '/images/logo-black.png'; ?>"></div>
+			<div><img id="target" style="opacity: 0.1;" src="<?php echo get_template_directory_uri() . '/images/logo-black.png'; ?>"></div>
 			<div class="section-about-middle-header"><span><?php echo getOption('middle', 'title'); ?></span></div>
 			<div class="section-about-middle-text"><span><?php echo getOption('middle','text'); ?></span></div>
 			<div><a href="<?php echo getOption('middle','link'); ?>"><img class="read-more" src="<?php echo get_template_directory_uri() . '/images/read_more-button.png'; ?>"></a></div>
@@ -93,3 +93,25 @@ function getOption($slug, $option)
 	<!-- End bottom right section -->
 
 <?php get_footer(); ?>
+
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+		
+		$(".intro-inner").animate({
+			opacity: 1,
+			maxWidth: 500
+		}, 2500);
+
+		if ($(window).width() > 768) {
+			var controller = new ScrollMagic();
+			var tween = TweenMax.to("#target", 1, {opacity: 1, scale: 1.1, ease: Linear.easeOut});
+			var scene = new ScrollScene({triggerElement: ".pattern", duration: 200})
+												.setTween(tween)
+												.addTo(controller);
+		} else {
+			$("#target").animate({
+				opacity: 1
+			}, 1000);
+		}
+	});
+</script>

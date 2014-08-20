@@ -18,10 +18,19 @@ $frontpage = $TrapDanmarkPanel->createTab( array(
  * HOME PAGE SLIDER
  *********************************/
 
-// $frontpage->createOption( array(
-//     'name' => 'FORSIDE Slider',
-//     'type' => 'heading',
-// ) );
+$frontpage->createOption( array(
+    'name' => 'FORSIDE Slider',
+    'type' => 'heading',
+) );
+
+for ($i=1; $i < 6; $i++) { 
+	$frontpage->createOption( array(
+		'name' => 'Baggrunds billede #' . $i,
+		'id' => 'background_img_' . $i,
+		'type' => 'upload',
+	) );
+}
+
 
 
 /**********************************
@@ -220,7 +229,7 @@ $donator = $TrapDanmarkPanel->createTab( array(
 	'name' => 'DONATORER',
 ) );
 
-for ($i=1; $i <= 4; $i++) { 
+for ($i=1; $i <= 5; $i++) { 
 
 	// Donator #1
 	$donator->createOption( array(

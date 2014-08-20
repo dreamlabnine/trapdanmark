@@ -8,13 +8,17 @@ $titan = TitanFramework::getInstance( 'trapdanmark' );
 		}
 		return $urlStr;
 	} 
+if ($titan->getOption('donator_logo_normal_5')) 
+	{ $numberOfDonators = 5; $donatorContainerClass = 'col-xs-12 col-sm-15 col-md-15'; } 
+else
+	{ $numberOfDonators = 4; $donatorContainerClass = 'col-xs-12 col-sm-6 col-md-3'; }
 
-for ($index=1; $index <=4; $index++) :
+for ($index=1; $index <=$numberOfDonators; $index++) :
 	$logo_normal = $titan->getOption('donator_logo_normal_' . $index);
 	$logo_hover = $titan->getOption('donator_logo_hover_' . $index);
 	$logo_link = $titan->getOption('donator_logo_link_' . $index) ? checkURL($titan->getOption('donator_logo_link_' . $index)) : '#' ;
 ?>
-	<div class="col-xs-12 col-sm-6 col-md-3 donator-container">
+	<div class="<?php echo $donatorContainerClass; ?> donator-container">
 		<a href="<?php echo $logo_link; ?>">
 			<div class="donator-image">
 				<img src="<?php echo $logo_normal; ?>">

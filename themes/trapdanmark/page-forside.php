@@ -13,16 +13,27 @@ Template Name: Forside
  *
  * @package TrapDanmark
  */
-
+$titan = TitanFramework::getInstance( 'trapdanmark' );
 get_header(); ?>
 
+<script>
+	var controller;
+	$(document).ready(function($) {
+		// init controller
+		controller = new ScrollMagic();
+	});
+</script>
+<div style="background: black;">
 	<ul class="cb-slideshow">
-        <li><span>Image 01</span></li>
-        <li><span>Image 02</span></li>
-        <li><span>Image 03</span></li>
-        <li><span>Image 04</span></li>
-        <li><span>Image 05</span></li>
-    </ul>
+		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_1');?>);">Image 01</span></li>
+		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_2');?>);">Image 02</span></li>
+		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_3');?>);">Image 03</span></li>
+		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_4');?>);">Image 04</span></li>
+		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_5');?>);">Image 05</span></li>
+	</ul>
+</div>
+
+</div>
 
 	<div class="container-fluid intro col-xs-12">
 		<div class="circle-container">
@@ -45,3 +56,24 @@ get_header(); ?>
 	<?php get_template_part( 'content', 'donator' ); ?>
 
 <?php get_footer(); ?>
+
+<script type="text/javascript" language="javascript">
+if ($(window).width() < 768) {
+	$(document).ready(function() {
+		$(".circle-text-inner").animate({
+			opacity: 1
+		}, 2500);
+	});
+} else {
+	$(document).ready(function() {
+		$(".circle-text").animate({
+			opacity: 1,
+			maxWidth: 500
+		}, 2000, function() {
+			$(".circle-text-inner").animate({
+				opacity: 1
+			}, 1000);
+		});
+	});
+}
+</script>
