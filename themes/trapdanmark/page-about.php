@@ -36,7 +36,7 @@ function getOption($slug, $option)
 			break;
 
 		case 'image':
-			$result['image'] = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' . wp_get_attachment_url( get_post_thumbnail_id($option_page_id) ) . ') center center';
+			$result['image'] = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' . $titan->getOption( 'about_us_' . $slug . '_img' ) . ') center center';
 			break;
 
 	}
@@ -50,13 +50,13 @@ function getOption($slug, $option)
 	<div class="container-fluid about-splash col-xs-12" style="background: linear-gradient(
       rgba(0, 0, 0, 0.7), 
       rgba(0, 0, 0, 0.7)
-    ), url(<?php echo get_template_directory_uri() . '/images/1.jpg'; ?>);">
+    ), url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post_id) ); ?>);">
 		<div class="intro-inner">
 			<div class="intro-header"><span><?php echo getOption('splash','title'); ?></span></div>
 			<div class="intro-text">
 				<span><?php echo getOption('splash','text'); ?></span>
 			</div>
-			<div><a href="<?php echo getOption('splash','link'); ?>"><img class="read-more" src="<?php echo get_template_directory_uri() . '/images/read_more-button.png'; ?>"></a></div>
+			<div><a class="read-more" href="<?php echo getOption('splash','link'); ?>"></a></div>
 		</div>
 	</div>	
 	<!-- End splash section -->
@@ -67,7 +67,7 @@ function getOption($slug, $option)
 			<div><img id="target" style="opacity: 0.1;" src="<?php echo get_template_directory_uri() . '/images/logo-black.png'; ?>"></div>
 			<div class="section-about-middle-header"><span><?php echo getOption('middle', 'title'); ?></span></div>
 			<div class="section-about-middle-text"><span><?php echo getOption('middle','text'); ?></span></div>
-			<div><a href="<?php echo getOption('middle','link'); ?>"><img class="read-more" src="<?php echo get_template_directory_uri() . '/images/read_more-button.png'; ?>"></a></div>
+			<div><a class="read-more" href="<?php echo getOption('middle','link'); ?>"></a></div>
 		</div>
 	</div>
 	<!-- End middle section -->
@@ -77,7 +77,7 @@ function getOption($slug, $option)
 		<div class="section-team_behind-inner">
 			<div class="section-team_behind-header"><span><?php echo getOption('bottom_left','title'); ?></span></div>
 			<div class="section-team_behind-text"><span><?php echo getOption('bottom_left','text'); ?></span></div>
-			<div><a href="<?php echo getOption('bottom_left','link'); ?>"><img class="read-more" src="<?php echo get_template_directory_uri() . '/images/read_more-button.png'; ?>"></a></div>
+			<div><a class="read-more" href="<?php echo getOption('bottom_left','link'); ?>"></a></div>
 		</div>
 	</div>
 	<!-- End bottom left section -->
@@ -87,7 +87,7 @@ function getOption($slug, $option)
 		<div class="section-partners-inner">
 			<div class="section-partners-header"><span><?php echo getOption('bottom_right','title'); ?></span></div>
 			<div class="section-partners-text"><span><?php echo getOption('bottom_right','text'); ?></span></div>
-			<div><a href="<?php echo getOption('bottom_right','link'); ?>"><img class="read-more" src="<?php echo get_template_directory_uri() . '/images/read_more-button.png'; ?>"></a></div>
+			<div><a class="read-more" href="<?php echo getOption('bottom_right','link'); ?>"></a></div>
 		</div>
 	</div>
 	<!-- End bottom right section -->

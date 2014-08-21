@@ -21,9 +21,39 @@ get_header(); ?>
 	$(document).ready(function($) {
 		// init controller
 		controller = new ScrollMagic();
+		$('.flexslider').flexslider({
+			animation: "fade",
+			slideshowSpeed: <?php echo $titan->getOption('background_speed');?>000,
+			slideshow: true,
+			animationSpeed: 600,
+			controlNav: false,
+			directionNav: false,
+		});
 	});
 </script>
-<div style="background: black;">
+
+<!-- Place somewhere in the <body> of your page -->
+<div class="flexslider cb-slideshow">
+	<ul class="slides">
+	<?php for ($i=1; $i < 6; $i++) {
+		if ($titan->getOption('background_img_' .$i)) : 
+			$background_img = ($titan->getOption('background_img_' .$i));
+			$background_img_size = $titan->getOption('background_img_size_' .$i);
+			echo "<li>";
+	    		echo '<div style="background: url(' . $background_img . '); background-size: ' . $background_img_size . ';">';
+	      			echo '<img src="" />';
+	    		echo '</div>';
+	    	echo '</li>';
+		else :
+			continue;
+		endif;
+		
+	} ?>
+
+  </ul>
+</div>
+
+<!-- <div style="background: black;">
 	<ul class="cb-slideshow">
 		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_1');?>);">Image 01</span></li>
 		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_2');?>);">Image 02</span></li>
@@ -31,7 +61,7 @@ get_header(); ?>
 		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_4');?>);">Image 04</span></li>
 		<li><span style="background-image: url(<?php echo $titan->getOption('background_img_5');?>);">Image 05</span></li>
 	</ul>
-</div>
+</div> -->
 
 </div>
 

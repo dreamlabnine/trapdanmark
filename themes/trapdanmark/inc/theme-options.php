@@ -23,11 +23,33 @@ $frontpage->createOption( array(
     'type' => 'heading',
 ) );
 
+$frontpage->createOption( array(
+    'name' => 'Slideshow hastighed',
+    'id' => 'background_speed',
+    'type' => 'number',
+    'desc' => 'Hvor mange sekunder mellem hvert baggrundsbillede',
+    'default' => '5',
+    'min' => '2',
+    'max' => '10',
+) );
+
 for ($i=1; $i < 6; $i++) { 
 	$frontpage->createOption( array(
-		'name' => 'Baggrunds billede #' . $i,
+		'name' => 'Baggrundsbillede #' . $i,
 		'id' => 'background_img_' . $i,
 		'type' => 'upload',
+	) );
+
+	$frontpage->createOption( array(
+		'name'	=> 'Baggrundsbillede #' . $i . ' størrelse',
+		'id'	=> 'background_img_size_' . $i,
+		'type'	=> 'select',
+		'desc'	=> 'Tilpassning af billede',
+		'options' => array(
+			'' => '- Vælg en',
+        	'contain' => 'Gentag billedet',
+        	'cover' => 'Tilpas billedet',
+    	),
 	) );
 }
 
@@ -112,6 +134,12 @@ $about_us->createOption( array(
 ) );
 
 $about_us->createOption( array(
+	'name' => 'Baggrundsbillede',
+	'id' => 'about_us_bottom_left_img',
+	'type' => 'upload',
+) );
+
+$about_us->createOption( array(
 	'name'		=> 'Special overskrift',
 	'id'		=> 'about_us_bottom_left_title',
 	'type'		=> 'text',
@@ -135,6 +163,12 @@ $about_us->createOption( array(
 	'name' => 'Tekst',
 	'id' => 'about_us_bottom_right_text',
 	'type' => 'editor',
+) );
+
+$about_us->createOption( array(
+	'name' => 'Baggrundsbillede',
+	'id' => 'about_us_bottom_right_img',
+	'type' => 'upload',
 ) );
 
 $about_us->createOption( array(

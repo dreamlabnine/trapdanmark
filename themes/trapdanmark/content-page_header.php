@@ -1,0 +1,1 @@
+<div class="col-xs-12 page-featured-image" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>') center center;"></div>

@@ -27,7 +27,7 @@ get_header(); ?>
 				$group_members = $titan->getOption( 'team_group' );
 				?>
 
-				<div class="col-xs-12 page-featured-image" style="background: url('<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>') center center;"></div>
+				<?php get_template_part( 'content', 'page_header' ); ?>
 				
 				<div class="col-xs-12 page-team-container">
 
