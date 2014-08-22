@@ -30,6 +30,6 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-	<?php if (is_page( 'historien' )) get_template_part( 'content', 'page_history' ); else echo 'test'; ?>
+	<?php if (is_page( 'historien' )) get_template_part( 'content', 'page_history' ); ?>
 
 <?php get_footer(); ?>
