@@ -20,15 +20,8 @@ get_header(); ?>
 				
 				<div class="col-xs-12 page-container">
 
-				<?php the_breadcrumb(); ?>
+					<?php the_breadcrumb(); ?>
 					<?php get_template_part( 'content', 'page' ); ?>
-
-					<?php
-						// // If comments are open or we have at least one comment, load up the comment template
-						// if ( comments_open() || '0' != get_comments_number() ) :
-						// 	comments_template();
-						// endif;
-					?>
 
 				</div>
 
@@ -36,5 +29,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+
+	<?php if (is_page( 'historien' )) get_template_part( 'content', 'page_history' ); else echo 'test'; ?>
 
 <?php get_footer(); ?>

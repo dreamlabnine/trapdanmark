@@ -16,7 +16,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php wp_head(); ?>
 </head>
-
+<?php $titan = TitanFramework::getInstance( 'trapdanmark' ); ?>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'trapdanmark' ); ?></a>
@@ -33,7 +33,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand page-scroll" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img class="logo" src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>">
+					<img class="logo" src="<?php echo $titan->getOption( 'site_logo' ); ?>" style="max-width: <?php echo $titan->getOption( 'site_logo_width' ); ?>px;">
 				</a>
 			</div>
 

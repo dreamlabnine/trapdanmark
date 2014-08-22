@@ -6,6 +6,32 @@ $TrapDanmarkPanel = $titan->createAdminPanel( array(
 ) );
 
 /**********************************
+ * GENERAL TAB
+ *********************************/
+
+$general = $TrapDanmarkPanel->createTab( array(
+	'name' => 'GENERALT',
+) );
+
+$general->createOption( array(
+		'name' => 'Logo',
+		'id' => 'site_logo',
+		'type' => 'upload',
+	) );
+
+$general->createOption( array(
+		'name' => 'Logo størrelse',
+		'id' => 'site_logo_width',
+		'type' => 'number',
+		'desc' => 'Max bredde på logo',
+		'min' => '150',
+		'max' => '400',
+		'step' => '10',
+		'default' => '200',
+	) );
+
+
+/**********************************
  * HOME PAGE TAB
  *********************************/
 
@@ -299,6 +325,28 @@ $footer->createOption( array(
 	'name' => 'Copyright tekst',
 	'id' => 'footer_copyright',
 	'type' => 'text',
+) );
+
+$footer->createOption( array(
+	'name' => 'Højre side tekst',
+	'id' => 'footer_made_by',
+	'type' => 'text',
+) );
+
+$footer->createOption( array(
+	'name' => 'Højre side tekst størrelse',
+	'id' => 'footer_made_by_size',
+	'type' => 'number',
+	'min' => '6',
+	'max' => '20',
+	'step' => '1',
+	'default' => '12',
+) );
+
+$footer->createOption( array(
+	'name' => 'Sub footer tekst',
+	'id' => 'sub_footer_text',
+	'type' => 'editor',
 ) );
 
 /**********************************

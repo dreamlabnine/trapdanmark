@@ -37,7 +37,7 @@ get_header(); ?>
 
 						<!-- Bestyrelsen -->
 						<div class="panel panel-default">
-							<div class="panel-heading">
+							<div class="panel-heading active">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 									<h4 class="panel-title">
 										<span>Bestyrelsen</span>
@@ -53,14 +53,14 @@ get_header(); ?>
 									</ul>
 									<?php foreach ($board_members as $board_member_id) {
 										echo '<div class="no-padding col-xs-6 col-sm-4 col-md-2 col-lg-2 team-members">';
-											echo '<div style="background: url(' . get_profile_picture($board_member_id) . ') center center no-repeat; background-size: cover; height:180px;"></div>';
+											echo '<div style="background: url(' . get_profile_picture($board_member_id) . ') center center no-repeat; background-size: cover; height:220px;"></div>';
 											echo '<div class="team-members-name"><span>' . get_the_title($board_member_id) . '</span></div>';
 										echo '</div>';
 									} ?>
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- Redaktionen -->
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -71,16 +71,16 @@ get_header(); ?>
 								</a>
 							</div>
 							<div id="collapseTwo" class="panel-collapse collapse">
-								<div class="panel-body team-editors">
-							  		<div class="col-md-3">
-							  			<?php foreach ($editors as $editor_id) {
-							  				echo '<div style="background: url(' . get_profile_picture($editor_id) . ') center center no-repeat; background-size: cover; height:180px;"></div>';
-							  				echo '<div class="team-members-name"><span>' . get_the_title($editor_id) . '</span></div>';
-							  			} ?>						  		
-							  		</div>
-							  		<div class="col-md-9 team-editors-text">
-							  			<?php echo $titan->getOption( 'team_editors_text' ); ?>
-							  		</div>
+								<div class="panel-body">
+									<div class="team-group team-group-text">
+									<?php echo $titan->getOption( 'team_editors_text' ); ?>
+									</div>
+									<?php foreach ($editors as $editor_id) {
+										echo '<div class="no-padding col-xs-6 col-sm-15 team-members">';
+											echo '<div style="background: url(' . get_profile_picture($editor_id) . ') center center no-repeat; background-size: cover; height:220px;"></div>';
+											echo '<div class="team-members-name"><span>' . get_the_title($editor_id) . '</span></div>';
+										echo '</div>';
+									} ?>
 								</div>
 							</div>
 						</div>
@@ -117,7 +117,7 @@ get_header(); ?>
 									</div>
 									<?php foreach ($group_members as $group_member_id) {
 										echo '<div class="no-padding col-xs-6 col-sm-15 team-members">';
-											echo '<div style="background: url(' . get_profile_picture($group_member_id) . ') center center no-repeat; background-size: cover; height:180px;"></div>';
+											echo '<div style="background: url(' . get_profile_picture($group_member_id) . ') center center no-repeat; background-size: cover; height:220px;"></div>';
 											echo '<div class="team-members-name"><span>' . get_the_title($group_member_id) . '</span></div>';
 										echo '</div>';
 									} ?>
@@ -133,5 +133,15 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+
+	<script type="text/javascript">
+		$('#accordion')
+		  .on('show.bs.collapse', function(e) {
+		    $(e.target).prev('.panel-heading').addClass('active');
+		  })
+		  .on('hide.bs.collapse', function(e) {
+		    $(e.target).prev('.panel-heading').removeClass('active');
+		  });
+	</script>
 
 <?php get_footer(); ?>

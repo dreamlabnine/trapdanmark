@@ -317,7 +317,7 @@ function get_position($ID) {
  * @return string Filtered position.
  */
 function get_profile_picture($ID) {
-	$profile_picture = wp_get_attachment_url( get_post_thumbnail_id($ID) ) ? wp_get_attachment_url( get_post_thumbnail_id($ID) ) : 'http://placehold.it/240x180';
+	$profile_picture = wp_get_attachment_url( get_post_thumbnail_id($ID) ) ? wp_get_attachment_url( get_post_thumbnail_id($ID) ) : 'http://placehold.it/300x300&text=Billede+kommer';
 	return $profile_picture;
 }
 

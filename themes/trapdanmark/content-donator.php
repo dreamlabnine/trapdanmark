@@ -21,10 +21,10 @@ for ($index=1; $index <=$numberOfDonators; $index++) :
 	<div class="<?php echo $donatorContainerClass; ?> donator-container">
 		<a href="<?php echo $logo_link; ?>">
 			<div class="donator-image">
-				<img src="<?php echo $logo_normal; ?>">
+				<img src="<?php echo $logo_normal; ?>" style="max-width: 220px;">
 			</div>
 			<div class="donator-image-hover">
-				<img src="<?php echo $logo_hover; ?>">
+				<img src="<?php echo $logo_hover; ?>"  style="max-width: 220px;">
 			</div>
 		</a>
 	</div>

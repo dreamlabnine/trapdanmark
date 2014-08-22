@@ -99,7 +99,6 @@ function getOption($slug, $option)
 		
 		$(".intro-inner").animate({
 			opacity: 1,
-			maxWidth: 500
 		}, 2500);
 
 		if ($(window).width() > 768) {

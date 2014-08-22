@@ -425,6 +425,7 @@ height: 100%!important;
 	background-color: #EFEFEF;
 	border: 1px solid #E6E6E6;
 	display: table;
+	padding: 0px;
 }
 
 .donator-container:hover {
@@ -524,7 +525,7 @@ height: 100%!important;
 
 @media screen and (min-width: $screen-md) {
 	.page-featured-image {
-		height: 250px !important;
+		height: 350px !important;
 	}
 }
 
@@ -537,6 +538,18 @@ height: 100%!important;
 .page-featured-image {
 	background-size: cover !important;
 	height: 150px;
+}
+
+.page-read-more {
+	display: table;
+	height: 250px;
+}
+
+.page-read-more .jptrap {
+	color: rgb(238, 238, 238);
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 .page-container {
@@ -581,13 +594,22 @@ height: 100%!important;
 	}
 }
 
-
 h4.panel-title:after {
-	content: '';
-	background: url('../images/arrow.gif') no-repeat;
+	content: '\e080';
+	font-family: 'Glyphicons Halflings';
 	height: 50px;
 	width: 50px;
 	float: right;
+	background-color: #A6A6A6;
+	font-size: 20px;
+	text-align: center;
+	color: #FFFFFF;
+	line-height: 50px;
+}
+
+.panel-heading {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
 .panel-group {
@@ -607,6 +629,19 @@ h4.panel-title:after {
 .panel-default>.panel-heading {
 	height: 50px;
 	padding: 10px 0 0 40px;
+}
+
+.panel-heading.active {
+	background: #262626;
+}
+
+.panel-heading.active h4:after {
+	content: '\e014';
+	background: #141414;
+}
+
+.panel-heading.active span {
+	color: #FFFFFF;
 }
 
 .panel-group .panel+.panel {
@@ -774,14 +809,32 @@ img.logo {
 	background-color: #000000;
 	color: #FFFFFF;
 	height: 40px;
-	padding-left: 30px;
+	padding: 0 30px;
 	display: table;
 	width: 100%;
 }
 
-.site-footer span {
-	display: table-cell;
-	vertical-align: middle;
-	height: 40px;
-	text-transform: uppercase;
+.site-footer div {
+	height: inherit;
+	padding: 0;
+}
+
+.site-footer p {
+	height: inherit;
+	line-height: 40px;
+	margin: 0;
+}
+
+.site-footer a, .site-footer a:visited,.site-footer a:hover, .site-footer a:active {
+	color: white;
+}
+
+.site-sub-footer {
+	background-color: #424242;
+	padding: 10px 30px;
+}
+
+.site-sub-footer p, .site-sub-footer a {
+	color: #E0E0E0;
+	margin: 0;
 }
